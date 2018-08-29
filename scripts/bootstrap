@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+mix deps.get
+if ! which webpack >&2; then
+  npm install -g webpack
+fi
+npm install
+mix ecto.create && mix ecto.migrate
+mix run priv/repo/seeds.exs
+mix phoenix.server

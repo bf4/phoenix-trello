@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# if ! which chromedriver >&2; then
+#   npm install -g chromedriver
+# fi
+# chromedriver &
+# mix test
+cp config/travis.exs config/test.exs
+mix do ecto.create, ecto.migrate
+mix test --exclude integration
